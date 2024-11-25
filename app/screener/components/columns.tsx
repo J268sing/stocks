@@ -2,9 +2,24 @@
 
 import { CellContext, ColumnDef } from "@tanstack/react-table"
 
-import type { ScreenerQuote } from "@/node_modules/yahoo-finance2/dist/esm/src/modules/screener"
+import ScreenerQuote from "@/node_modules/yahoo-finance2/dist/esm/src/modules/screener"
 import { cn } from "@/lib/utils"
 import Link from "next/link"
+
+
+
+type ScreenerQuote = {
+  symbol: string;
+  shortName: string;
+  "P/E"?: number;  
+  regularMarketPrice: number;
+  regularMarketChange: number;
+  regularMarketChangePercent: number;
+  regularMarketVolume?: number;
+  averageDailyVolume3Month: number;
+  marketCap?: number;
+  epsTrailingTwelveMonths?: number;
+};
 
 export const columns: ColumnDef<ScreenerQuote>[] = [
   {

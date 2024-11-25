@@ -1,5 +1,38 @@
 import { fetchQuoteSummary } from "@/lib/yahoo-finance/fetchQuoteSummary"
 
+
+
+
+
+type FinanceSummaryResponse = {
+  summaryDetail?: {
+    open?: number;
+    dayHigh?: number;
+    dayLow?: number;
+    volume?: number;
+    trailingPE?: number;
+    marketCap?: number;
+    fiftyTwoWeekHigh?: number;
+    fiftyTwoWeekLow?: number;
+    averageVolume?: number;
+    dividendYield?: number;
+    beta?: number;
+    trailingEps?: number;
+  };
+  defaultKeyStatistics?: {
+    beta?: number;
+    trailingEps?: number;
+    enterpriseValue?: number;
+    forwardPE?: number;
+    profitMargins?: number;
+    // Add other fields that you need
+  };
+  // Add other sections as needed
+  [key: string]: any; // Allow dynamic property access
+
+};
+
+
 function formatNumber(num: number) {
   if (num >= 1e12) {
     return `${(num / 1e12).toFixed(2)}T`
@@ -34,7 +67,7 @@ const keysToDisplay = [
 ]
 
 export default async function FinanceSummary({ ticker }: { ticker: string }) {
-  const financeSummaryData = await fetchQuoteSummary(ticker)
+  const financeSummaryData: FinanceSummaryResponse = await fetchQuoteSummary(ticker)
 
   return (
     <div className="grid grid-flow-col grid-rows-6 gap-4 md:grid-rows-3">

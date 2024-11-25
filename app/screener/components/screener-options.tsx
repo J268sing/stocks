@@ -1,4 +1,5 @@
-import type { PredefinedScreenerModules } from "@/node_modules/yahoo-finance2/dist/esm/src/modules/screener"
+// Correct import statement for your custom type definition
+import type { PredefinedScreenerModules } from "../../../types/yahoo-finance";
 
 type ScreenerOption = {
   label: string
